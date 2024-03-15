@@ -51,11 +51,14 @@ function finalizarTarefa(elemento) {
     const li = elemento.parentNode;
 
     const estaFinalizada = li.classList.contains("finalizada");
+    const index = tarefas.findIndex((item) => item.titulo === elemento.innerHTML);
 
     if (estaFinalizada === true) {
         contador++;
+        tarefas[index].status = "progresso";
     } else {
         contador--;
+        tarefas[index].status = "finalizada";
     }
 
     li.classList.toggle("finalizada");
@@ -63,13 +66,15 @@ function finalizarTarefa(elemento) {
 }
 
 function finalizarTodas() {
-    const tarefas = document.querySelectorAll("li");
+    const elementosTarefas = document.querySelectorAll("li");
 
     let index = 0;
 
     while (index < tarefas.length) {
-        tarefas[index].classList.add("finalizada");
+        elementosTarefas[index].classList.add("finalizada");
+        tarefas[index].status = "finalizada";
         index++;
+        console.log(tarefas)
     }
     contador = 0;
     atualizarContador();
