@@ -1,10 +1,16 @@
 const tarefas = [];
 
-tarefas.push(prompt(`Digite a ${tarefas.length + 1}ª tarefa`));
-tarefas.push(prompt(`Digite a ${tarefas.length + 1}ª tarefa`));
-tarefas.push(prompt(`Digite a ${tarefas.length + 1}ª tarefa`));
+const qtde = Number(prompt("Quantas tarefas você quer adicionar?"));
 
+let contador = 0;
+while(qtde > contador) {
+    tarefas.push(prompt(`Digite a ${tarefas.length + 1}ª tarefa:`));
+    contador++;
+}
+
+contador = 0;
 const lista = document.querySelector("ul");
-lista.innerHTML = lista.innerHTML + `<li>${tarefas[0]}</li>`;
-lista.innerHTML = lista.innerHTML + `<li>${tarefas[1]}</li>`;
-lista.innerHTML = lista.innerHTML + `<li>${tarefas[2]}</li>`;
+while(qtde > contador) {
+    lista.innerHTML += `<li>${tarefas[contador]}</li>`;
+    contador++;
+}
