@@ -1,44 +1,50 @@
 let contador = 3;
-const tarefasTutorial = [
-    "Adicione uma tarefa no botão acima ☝️",
-    "Passe o mouse na tarefa para ver o botão de excluir 🗑️",
-    "Clique na tarefa para marcá-la como feita ✔️"
+const tarefas = [
+    { titulo: "Adicione uma tarefa no botão acima ☝️", status: "progresso" },
+    { titulo: "Passe o mouse na tarefa para ver o botão excluir 🗑️", status: "progresso" },
+    { titulo: "Clique na tarefa para marcá-la como feita ✔️", status: "progresso" }
 ];
 
-function adicionarTarefasTutorial() {
-    const ul = document.querySelector('ul');
+function atualizarTarefas() {
+    const ul = document.querySelector("ul");
+    ul.innerHTML = "";
+    contador = 0;
 
-    for (let index = 0; index < tarefasTutorial.length; index++) {
-        const elementoTarefa = `
-            <li>
-                <div class="btn-delete">
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-                <span onclick="finalizarTarefa(this)">${tarefasTutorial[index]}</span>
-            </li>
-        `;
+    for (let index = 0; index < tarefas.length; index++) {
+        let elementoTarefa;
+        if (tarefas[index].status === "finalizada") {
+            elementoTarefa = `
+                <li class="finalizada">
+                    <div class="btn-delete">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </div>
+                    <span onclick="finalizarTarefa(this)">${tarefas[index].titulo}</span>
+                </li>
+            `;
+        } else {
+            elementoTarefa = `
+                <li>
+                    <div class="btn-delete">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </div>
+                    <span onclick="finalizarTarefa(this)">${tarefas[index].titulo}</span>
+                </li>
+            `;
+        }
 
         ul.innerHTML += elementoTarefa;
+        contador++;
     }
+    atualizarContador();
 }
 
-adicionarTarefasTutorial();
+atualizarTarefas();
 
 function adicionarNovaTarefa() {
     const novaTarefa = document.querySelector("input").value;
-    let ul = document.querySelector("ul");
-    
-    ul.innerHTML += `
-        <li>
-            <div class="btn-delete">
-                <ion-icon name="trash-outline"></ion-icon>
-            </div>
-            <span onclick="finalizarTarefa(this)">${novaTarefa}</span>
-        </li>
-    `;
+    tarefas.push({titulo: novaTarefa, status: "progresso"});
+    atualizarTarefas();
     document.querySelector("input").value = "";
-    contador++;
-    atualizarContador();
 }
 
 function finalizarTarefa(elemento) {
