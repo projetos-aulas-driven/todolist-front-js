@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List Feia</title>
+    <meta charset="utf-8" />
+    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500, 700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/estilos.css" />
 </head>
 
 <body>
-    <ul></ul>
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="header">
+            <h1>To-do List (3)</h1>
+            <button><ion-icon name="checkbox-outline"></ion-icon></button>
+        </div>
+
+
+        <div class="title">
+            <input type="text" placeholder="Add New To-do">
+            <button>Add</button>
+        </div>
+
+        <ul>
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Adicione uma tarefa no botão acima ☝️</span>
+            </li>
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Passe o mouse na tarefa para ver o botão excluir 🗑️</span>
+            </li>
+            <li>
+                <div class="btn-delete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <span>Clique na tarefa para marca-la como feita ✔️</span>
+            </li>
+
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
 </body>
 
 </html>
